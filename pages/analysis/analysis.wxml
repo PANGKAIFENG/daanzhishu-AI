@@ -1,0 +1,29 @@
+<view class="analysis-container">
+  <!-- 自定义导航栏 -->
+  <view class="custom-nav">
+    <view class="status-bar"></view>
+    <view class="nav-content">
+      <view class="nav-back" bindtap="navigateBack">
+        <text class="back-icon">←</text>
+      </view>
+      <view class="nav-title">AI解析</view>
+      <view class="nav-placeholder"></view>
+    </view>
+  </view>
+
+  <!-- 答案展示卡片 -->
+  <view class="answer-card">
+    <text class="answer-text">「{{answer}}」</text>
+  </view>
+
+  <!-- 使用默认分析提示 -->
+  <view class="default-tip" wx:if="{{usingDefault}}">
+    <text class="tip-text">以下为通用解析内容</text>
+  </view>
+
+  <!-- 使用用时注入组件 -->
+  <analysis-view
+    answer="{{answer}}"
+    analysis="{{analysis}}"
+  ></analysis-view>
+</view> 

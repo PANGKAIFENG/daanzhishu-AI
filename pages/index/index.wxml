@@ -1,0 +1,43 @@
+<view class="container">
+  <!-- 书籍展示区域 - 带底框 -->
+  <view class="book-frame">
+    <view class="book-container">
+      <view class="book-wrapper">
+        <!-- 静态立体书籍 -->
+        <view class="book-cover">
+          <view class="book-spine"></view>
+          <view class="book-front">
+            <view class="book-emblem"></view>
+          </view>
+          <view class="book-edge"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 问题展示区 - 无边框 -->
+  <view class="question-section">
+    <view class="question-title">在心中默想你的问题：</view>
+    <view class="question-content">{{questions[currentQuestionIndex]}}</view>
+    
+    <!-- 思考中状态 -->
+    <view class="thinking-animation" wx:if="{{isThinking}}">
+      <view class="thinking-dot"></view>
+      <view class="thinking-dot"></view>
+      <view class="thinking-dot"></view>
+    </view>
+  </view>
+  
+  <!-- 按钮区域 -->
+  <view class="action-area">
+    <view class="custom-btn {{isThinking ? 'disabled' : ''}}" 
+          bindtap="{{isThinking ? '' : 'onTapGetAnswer'}}"
+          hover-class="{{isThinking ? '' : 'button-hover'}}"
+          hover-stay-time="100">
+      <text class="btn-text">寻找答案</text>
+    </view>
+  </view>
+  
+  <!-- 底部文案 -->
+  <view class="footer-text">每个烦恼背后，都有一个等待被找到的答案</view>
+</view> 

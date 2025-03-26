@@ -1,0 +1,23 @@
+<view class="placeholder-container">
+  <view class="answer-card">
+    <text class="answer-text">「{{answer}}」</text>
+  </view>
+  
+  <view class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">解析加载中...</text>
+  </view>
+  
+  <!-- 占位卡片 -->
+  <view class="placeholder-card" wx:for="{{4}}" wx:key="index">
+    <view class="placeholder-header">
+      <view class="placeholder-circle"></view>
+      <view class="placeholder-title"></view>
+    </view>
+    <view class="placeholder-content">
+      <view class="placeholder-line"></view>
+      <view class="placeholder-line"></view>
+      <view class="placeholder-line" style="width: 70%;"></view>
+    </view>
+  </view>
+</view> 

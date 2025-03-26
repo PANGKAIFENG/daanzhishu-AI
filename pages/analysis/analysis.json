@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "analysis-view": "/components/AnalysisView/index"
+  },
+  "navigationStyle": "custom",
+  "backgroundColor": "#1E1E2E",
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "AI解析"
+} 

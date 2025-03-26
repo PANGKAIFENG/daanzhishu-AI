@@ -1,0 +1,94 @@
+/**app.wxss**/
+/* 全局样式 */
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica,
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  --primary-color: #8a2be2; /* 主题紫色 */
+  --gradient-start: #a78bfa;
+  --gradient-end: #ec4899;
+  --shadow-color: rgba(236, 72, 153, 0.3);
+  --text-color: #333333;
+  --light-text: #666666;
+  background-color: #f7f7f7;
+  color: var(--text-color);
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 30rpx;
+}
+
+/* 渐变按钮 */
+.gradient-btn {
+  padding: 20rpx 60rpx;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  color: white;
+  border-radius: 50rpx;
+  font-weight: 500;
+  box-shadow: 0 10rpx 20rpx var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.gradient-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 5rpx 10rpx var(--shadow-color);
+}
+
+/* 卡片样式 */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 40rpx 30rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+  width: 80%;
+  max-width: 600rpx;
+}
+
+/* 动画类 */
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 修复状态栏问题 */
+.status-bar-fix {
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+} 

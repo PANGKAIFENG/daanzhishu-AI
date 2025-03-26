@@ -1,0 +1,29 @@
+<view class="container">
+  <!-- 背景装饰 -->
+  <view class="stars-bg">
+    <view class="star" wx:for="{{12}}" wx:key="index"></view>
+  </view>
+  <view class="light-halo"></view>
+  
+  <!-- 主要内容区域 -->
+  <view class="content-container">
+    <!-- 答案卡片 - 使用固定高度布局 -->
+    <view class="answer-card">
+      <view class="answer-content">
+        <text class="answer-text">{{displayAnswer}}<text class="cursor" wx:if="{{showCursor}}">|</text></text>
+        <view class="answer-note" wx:if="{{showEncouragement}}">{{encouragement}}</view>
+      </view>
+    </view>
+    
+    <!-- 社群信息 - 独立容器 -->
+    <view class="community-note" wx:if="{{showCommunityNote}}">
+      第 {{visitCount}} 位寻求答案的人
+    </view>
+    
+    <!-- 按钮区域 -->
+    <view class="button-area">
+      <button class="purple-btn" hover-class="btn-hover" bindtap="onTapAskAgain">再问一次</button>
+      <button class="gold-btn" hover-class="gold-btn-hover" bindtap="onTapAnalysis">AI解析</button>
+    </view>
+  </view>
+</view> 

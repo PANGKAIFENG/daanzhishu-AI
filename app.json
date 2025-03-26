@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/answer/answer",
+    "pages/analysis/analysis"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "解忧杂货铺",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "darkmode": true,
+  "lazyCodeLoading": "requiredComponents",
+  "subpackages": [
+    {
+      "root": "dataPackage",
+      "name": "dataPackage",
+      "pages": [
+        "dataLoader/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["dataPackage"]
+    }
+  }
+} 

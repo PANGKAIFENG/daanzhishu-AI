@@ -1,0 +1,3 @@
+<view class="container">
+  <view class="loading {{loaded ? 'loaded' : ''}}">数据加载中...</view>
+</view> 

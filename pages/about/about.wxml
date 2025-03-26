@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="card about-card">
+    <view class="about-title">关于解忧杂货铺</view>
+    <view class="about-content">
+      <view class="about-section">
+        <view class="section-title">应用简介</view>
+        <view class="section-content">
+          "解忧杂货铺"是一款随机答案生成器，当你面临选择困难或需要建议时，在心中默念问题，点击按钮获得一个随机答案。
+        </view>
+      </view>
+      
+      <view class="about-section">
+        <view class="section-title">使用方法</view>
+        <view class="section-content">
+          1. 在心中默想一个问题
+          2. 点击"揭晓答案"按钮
+          3. 获取你的神秘答案
+        </view>
+      </view>
+      
+      <view class="about-section">
+        <view class="section-title">答案统计</view>
+        <view class="section-content">
+          <view class="stat-item">总答案数量: {{totalAnswers}}条</view>
+        </view>
+      </view>
+      
+      <view class="about-section">
+        <view class="section-title">版本信息</view>
+        <view class="section-content">
+          <view class="version">v{{version}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <button class="gradient-btn back-btn" bindtap="onTapBack">返回</button>
+</view> 

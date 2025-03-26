@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading {
+  font-size: 16px;
+  color: #999;
+}
+
+.loaded {
+  color: #4CAF50;
+} 

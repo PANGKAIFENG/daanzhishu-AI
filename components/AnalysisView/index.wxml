@@ -1,0 +1,49 @@
+<view class="analysis-content">
+  <!-- 核心解读卡片 -->
+  <view class="analysis-card">
+    <view class="card-header" bindtap="toggleSection" data-section="core">
+      <view class="icon-circle purple"></view>
+      <text class="header-text">核心解读</text>
+      <view class="toggle-icon {{expanded.core ? 'expanded' : ''}}">▼</view>
+    </view>
+    <view class="card-content" wx:if="{{expanded.core}}">
+      <text>{{analysis.core}}</text>
+    </view>
+  </view>
+
+  <!-- 具体表现卡片 -->
+  <view class="analysis-card">
+    <view class="card-header" bindtap="toggleSection" data-section="manifestation">
+      <view class="icon-circle purple"></view>
+      <text class="header-text">具体表现</text>
+      <view class="toggle-icon {{expanded.manifestation ? 'expanded' : ''}}">▼</view>
+    </view>
+    <view class="card-content" wx:if="{{expanded.manifestation}}">
+      <text>{{analysis.manifestation}}</text>
+    </view>
+  </view>
+
+  <!-- 解决方案卡片 -->
+  <view class="analysis-card">
+    <view class="card-header" bindtap="toggleSection" data-section="solution">
+      <view class="icon-circle purple"></view>
+      <text class="header-text">解决方案</text>
+      <view class="toggle-icon {{expanded.solution ? 'expanded' : ''}}">▼</view>
+    </view>
+    <view class="card-content" wx:if="{{expanded.solution}}">
+      <text>{{analysis.solution}}</text>
+    </view>
+  </view>
+
+  <!-- 温馨提示卡片 -->
+  <view class="analysis-card">
+    <view class="card-header" bindtap="toggleSection" data-section="tips">
+      <view class="icon-circle purple"></view>
+      <text class="header-text">温馨提示</text>
+      <view class="toggle-icon {{expanded.tips ? 'expanded' : ''}}">▼</view>
+    </view>
+    <view class="card-content" wx:if="{{expanded.tips}}">
+      <text>{{analysis.tips}}</text>
+    </view>
+  </view>
+</view> 
