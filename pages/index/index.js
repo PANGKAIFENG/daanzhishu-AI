@@ -74,43 +74,30 @@ Page({
   
   // 处理寻找答案按钮点击
   onTapGetAnswer: function() {
-    // 设置思考状态
-    this.setData({
-      isThinking: true
-    });
-    
     // 停止问题轮播
     this.clearQuestionCarousel();
     
-    // 延迟执行，显示思考动画
-    setTimeout(() => {
-      // 获取当前问题
-      let currentQuestion = this.data.questions[this.data.currentQuestionIndex];
-      
-      // 获取随机答案
-      const answer = getRandomAnswer();
-      
-      // 获取访问计数
-      const counter = new VisitCounter();
-      const visitCount = counter.getCurrentCount();
-      
-      // 保存答案到全局数据
-      app.globalData.currentAnswer = answer;
-      app.globalData.currentQuestion = currentQuestion;
-      
-      // 跳转到答案页，并传递答案参数
-      wx.navigateTo({
-        url: `/pages/answer/answer?answer=${encodeURIComponent(answer)}&visitCount=${visitCount}`
-      });
-      
-      // 保存到历史记录
-      this.saveToHistory(answer);
-      
-      // 重置思考状态
-      this.setData({
-        isThinking: false
-      });
-    }, 1500);
+    // 获取当前问题
+    let currentQuestion = this.data.questions[this.data.currentQuestionIndex];
+    
+    // 获取随机答案
+    const answer = getRandomAnswer();
+    
+    // 获取访问计数
+    const counter = new VisitCounter();
+    const visitCount = counter.getCurrentCount();
+    
+    // 保存答案到全局数据
+    app.globalData.currentAnswer = answer;
+    app.globalData.currentQuestion = currentQuestion;
+    
+    // 直接跳转到答案页，并传递答案参数
+    wx.navigateTo({
+      url: `/pages/answer/answer?answer=${encodeURIComponent(answer)}&visitCount=${visitCount}`
+    });
+    
+    // 保存到历史记录
+    this.saveToHistory(answer);
   },
   
   // 分享小程序

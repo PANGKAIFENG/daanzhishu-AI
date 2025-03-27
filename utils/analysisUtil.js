@@ -35,71 +35,93 @@ const getAnalysisDatabase = () => {
 };
 
 /**
- * 获取答案对应的解析信息
+ * 从本地数据库获取预设解析
  * @param {string} answer 答案文本
- * @returns {Object|null} 解析信息对象，包含core, manifestation, solution, tips字段
+ * @returns {Object|null} 解析信息对象
  */
-const getAnswerAnalysis = (answer) => {
-  if (!answer) return null;
-  
-  console.log('getAnswerAnalysis 被调用, 答案:', answer);
+const getLocalAnalysis = (answer) => {
+  console.log('尝试从本地获取解析');
   
   // 获取解析数据库
   const database = getAnalysisDatabase();
-  console.log('获取到的数据库包含', database ? Object.keys(database).length : 0, '个解析条目');
   
   // 在数据库中查找对应答案的解析
   if (database && database[answer]) {
-    console.log('找到匹配的解析');
-    return database[answer];
+    console.log('找到本地匹配的解析');
+    return {
+      success: true,
+      data: database[answer],
+      source: 'local'
+    };
   }
   
-  // 如果无法直接匹配，尝试从各个解析数据源中直接加载
+  // 尝试从各个数据源获取
   try {
-    // 尝试从各个数据源获取
-    let alternativeSource = null;
-    
     // 尝试从analysisData.js获取
-    try {
-      const analysisData = require('./analysisData').analysisDatabase;
-      if (analysisData && analysisData[answer]) {
-        console.log('从analysisData.js找到匹配解析');
-        return analysisData[answer];
-      }
-    } catch (e) {
-      console.log('从analysisData.js获取解析失败:', e.message);
+    const analysisData = require('./analysisData').analysisDatabase;
+    if (analysisData && analysisData[answer]) {
+      console.log('从analysisData.js找到匹配解析');
+      return {
+        success: true,
+        data: analysisData[answer],
+        source: 'local'
+      };
     }
-    
-    // 尝试从analysisDatabase.js获取
-    try {
-      const analysisDBModule = require('./analysisDatabase');
-      if (typeof analysisDBModule.getAnswerAnalysis === 'function') {
-        alternativeSource = analysisDBModule.getAnswerAnalysis(answer);
-        if (alternativeSource) {
-          console.log('从analysisDatabase.js的函数获取到解析');
-          return alternativeSource;
-        }
-      }
-    } catch (e) {
-      console.log('从analysisDatabase.js获取解析失败:', e.message);
-    }
-    
-    // 尝试从本地备用数据获取
-    try {
-      const fallbackData = require('./analysisDataFallback').analysisDatabase;
-      if (fallbackData && fallbackData[answer]) {
-        console.log('从fallbackData找到匹配解析');
-        return fallbackData[answer];
-      }
-    } catch (e) {
-      console.log('从fallbackData获取解析失败:', e.message);
-    }
-  } catch (err) {
-    console.error('尝试所有数据源均失败:', err.message);
+  } catch (e) {
+    console.log('从analysisData.js获取解析失败:', e.message);
   }
   
-  console.log(`未找到答案 "${answer}" 的解析信息, 可用的答案列表:`, database ? Object.keys(database).slice(0, 5) : []);
+  // 尝试从本地备用数据获取
+  try {
+    const fallbackData = require('./analysisDataFallback').analysisDatabase;
+    if (fallbackData && fallbackData[answer]) {
+      console.log('从fallbackData找到匹配解析');
+      return {
+        success: true,
+        data: fallbackData[answer],
+        source: 'local'
+      };
+    }
+  } catch (e) {
+    console.log('从fallbackData获取解析失败:', e.message);
+  }
+  
   return null;
+};
+
+/**
+ * 获取答案的解析信息
+ * 直接使用本地预设解析，不再尝试调用AI
+ * @param {string} answer 答案文本
+ * @returns {Promise<Object>} 解析信息对象
+ */
+const getAnswerAnalysis = async (answer) => {
+  if (!answer) {
+    return {
+      success: false,
+      error: '答案内容不能为空'
+    };
+  }
+  
+  console.log('直接使用本地解析，不再尝试AI分析');
+  
+  // 尝试使用本地预设解析
+  const localResult = getLocalAnalysis(answer);
+  if (localResult) {
+    return localResult;
+  }
+  
+  // 如果本地也没有匹配的解析，返回默认解析
+  return {
+    success: true,
+    data: {
+      core: "这个答案需要你根据自身情况来理解。以下是一些通用的思考方向。",
+      manifestation: "• 这可能表现为对现状的不满\n• 对未来的不确定感\n• 内心期望与现实的差距\n• 需要做出重要决定的时刻\n• 希望找到更好的解决方案",
+      solution: "• 列出当前情况的优缺点\n• 设定明确可行的小目标\n• 尝试改变视角看问题\n• 寻求可信赖的人建议\n• 给自己留出思考的时间和空间\n• 记录下当前的想法，未来再回顾",
+      tips: "记住，每个人都有迷茫和困惑的时候。重要的是保持开放的心态，相信自己的判断，同时也要勇于接受变化和挑战。"
+    },
+    source: 'default'
+  };
 };
 
 /**

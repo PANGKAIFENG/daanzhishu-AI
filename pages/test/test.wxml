@@ -1,0 +1,30 @@
+<view class="container">
+  <view class="header">
+    <text class="title">AI分析测试</text>
+    <text class="subtitle">测试进度: {{currentTestIndex}}/{{testAnswers.length}}</text>
+  </view>
+
+  <view class="control-panel">
+    <button class="test-btn" bindtap="testNextAnswer" disabled="{{isLoading}}">
+      {{isLoading ? '分析中...' : '测试下一个答案'}}
+    </button>
+    <button class="clear-btn" bindtap="clearResults">清除结果</button>
+  </view>
+
+  <view class="results-container">
+    <block wx:for="{{testResults}}" wx:key="timestamp">
+      <view class="result-item">
+        <view class="result-header">
+          <text class="timestamp">{{item.timestamp}}</text>
+        </view>
+        <view class="answer-text">答案：{{item.answer}}</view>
+        <view class="analysis-content" wx:if="{{item.result.success}}">
+          <view class="analysis-data">{{item.result.data}}</view>
+        </view>
+        <view class="error-message" wx:else>
+          错误：{{item.error || item.result.error}}
+        </view>
+      </view>
+    </block>
+  </view>
+</view> 

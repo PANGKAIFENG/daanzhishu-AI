@@ -23,7 +23,7 @@
     <!-- 按钮区域 -->
     <view class="button-area">
       <button class="purple-btn" hover-class="btn-hover" bindtap="onTapAskAgain">再问一次</button>
-      <button class="gold-btn" hover-class="gold-btn-hover" bindtap="onTapAnalysis">AI解析</button>
+      <button class="share-btn" open-type="share">快乐加倍</button>
     </view>
   </view>
 </view> 

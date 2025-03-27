@@ -9,7 +9,7 @@ Page({
     encouragement: "",
     visitCount: 0,
     showCursor: true,
-    showEncouragement: false,
+    showEncouragement: true,
     showCommunityNote: false,
     showFooterNote: false,
     footerNote: "",
@@ -173,27 +173,12 @@ Page({
   
   // 显示附加内容
   showAdditionalContent: function() {
-    // 答案显示完成后等待100ms再显示鼓励文案
-    setTimeout(() => {
-      this.setData({
-        showCursor: false,
-        showEncouragement: true
-      });
-      
-      // 鼓励文案显示后100ms显示访问计数
-      setTimeout(() => {
-        this.setData({
-          showCommunityNote: true
-        });
-        
-        // 访问计数显示后100ms显示底部文案
-        setTimeout(() => {
-          this.setData({
-            showFooterNote: true
-          });
-        }, 50);
-      }, 50);
-    }, 50);
+    // 答案显示完成后立即显示所有内容
+    this.setData({
+      showCursor: false,
+      showCommunityNote: true,
+      showFooterNote: true
+    });
   },
   
   // 页面隐藏时暂停动画
@@ -257,8 +242,9 @@ Page({
   // 分享功能
   onShareAppMessage: function() {
     return {
-      title: `『${this.data.answer}』- 来自答案之书的回答`,
-      path: '/pages/index/index'
+      title: `✨ 我从答案之书获得了这个启示：『${this.data.answer}』`,
+      path: '/pages/index/index',
+      imageUrl: '/images/share-card.png' // 如果有分享卡片图片
     };
   }
 }) 

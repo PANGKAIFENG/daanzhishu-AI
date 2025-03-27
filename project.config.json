@@ -1,43 +1,50 @@
 {
     "description": "解忧杂货铺微信小程序 V0.1",
+    "miniprogramRoot": "",
+    "cloudfunctionRoot": "cloudfunctions/",
     "packOptions": {
         "ignore": [],
         "include": []
     },
     "setting": {
+        "bundle": false,
+        "userConfirmedBundleSwitch": false,
         "urlCheck": true,
-        "es6": true,
-        "enhance": true,
-        "postcss": true,
-        "preloadBackgroundData": false,
-        "minified": true,
-        "newFeature": false,
-        "coverView": true,
-        "nodeModules": false,
-        "autoAudits": false,
-        "showShadowRootInWxmlPanel": true,
         "scopeDataCheck": false,
-        "uglifyFileName": false,
-        "checkInvalidKey": true,
-        "checkSiteMap": true,
-        "uploadWithSourceMap": true,
+        "coverView": true,
+        "es6": true,
+        "postcss": true,
         "compileHotReLoad": false,
         "lazyloadPlaceholderEnable": false,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "autoAudits": false,
+        "newFeature": false,
+        "uglifyFileName": false,
+        "uploadWithSourceMap": true,
+        "useIsolateContext": true,
+        "nodeModules": false,
+        "enhance": true,
         "useMultiFrameRuntime": true,
-        "useApiHook": true,
-        "useApiHostProcess": true,
+        "showShadowRootInWxmlPanel": true,
+        "packNpmManually": false,
+        "enableEngineNative": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "showES6CompileOption": false,
+        "minifyWXML": true,
+        "useCompilerPlugins": [
+            "sass"
+        ],
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
             "outputPath": ""
         },
-        "enableEngineNative": false,
-        "useIsolateContext": true,
-        "userConfirmedBundleSwitch": false,
-        "packNpmManually": false,
-        "packNpmRelationList": [],
-        "minifyWXSS": true,
-        "showES6CompileOption": false
+        "checkInvalidKey": true,
+        "checkSiteMap": true,
+        "useApiHook": true,
+        "useApiHostProcess": true
     },
     "compileType": "miniprogram",
     "libVersion": "3.0.2",
@@ -47,5 +54,10 @@
     "editorSetting": {
         "tabIndent": "insertSpaces",
         "tabSize": 4
-    }
+    },
+    "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+    "srcMiniprogramRoot": "",
+    "cloud": true,
+    "cloudbaseRoot": "cloudbaserc/",
+    "cloudbaseEnv": "cloud1-6g0h9t3t6fef0dd2"
 }

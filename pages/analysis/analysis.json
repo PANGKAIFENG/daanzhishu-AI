@@ -1,7 +1,5 @@
 {
-  "usingComponents": {
-    "analysis-view": "/components/AnalysisView/index"
-  },
+  "usingComponents": {},
   "navigationStyle": "custom",
   "backgroundColor": "#1E1E2E",
   "backgroundTextStyle": "light",

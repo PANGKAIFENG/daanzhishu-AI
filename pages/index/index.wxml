@@ -19,20 +19,13 @@
   <view class="question-section">
     <view class="question-title">在心中默想你的问题：</view>
     <view class="question-content">{{questions[currentQuestionIndex]}}</view>
-    
-    <!-- 思考中状态 -->
-    <view class="thinking-animation" wx:if="{{isThinking}}">
-      <view class="thinking-dot"></view>
-      <view class="thinking-dot"></view>
-      <view class="thinking-dot"></view>
-    </view>
   </view>
   
   <!-- 按钮区域 -->
   <view class="action-area">
-    <view class="custom-btn {{isThinking ? 'disabled' : ''}}" 
-          bindtap="{{isThinking ? '' : 'onTapGetAnswer'}}"
-          hover-class="{{isThinking ? '' : 'button-hover'}}"
+    <view class="custom-btn" 
+          bindtap="onTapGetAnswer"
+          hover-class="button-hover"
           hover-stay-time="100">
       <text class="btn-text">寻找答案</text>
     </view>

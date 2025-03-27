@@ -3,12 +3,13 @@
     "pages/index/index",
     "pages/about/about",
     "pages/answer/answer",
-    "pages/analysis/analysis"
+    "pages/analysis/analysis",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "解忧杂货铺",
+    "navigationBarTitleText": "答案之书",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",

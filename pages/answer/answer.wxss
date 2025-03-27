@@ -153,14 +153,17 @@
 .button-area {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 20rpx;
   margin-top: 20rpx;
+  padding: 0 40rpx;
+  box-sizing: border-box;
 }
 
 .purple-btn {
-  width: 80%;
+  flex: 1;
   height: 90rpx;
   background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%);
   border-radius: 10rpx;
@@ -169,7 +172,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20rpx;
   box-shadow: 0 5rpx 15rpx rgba(155, 89, 182, 0.3);
   transition: all 0.2s ease;
 }
@@ -440,20 +442,52 @@
 
 /* 分享按钮 */
 .share-btn {
-  background: transparent;
-  border: none;
-  margin-top: 30rpx;
-  padding: 0;
+  flex: 1;
+  height: 90rpx;
+  background: linear-gradient(135deg, #FF9500 0%, #FF5252 100%);
+  border: 2rpx solid rgba(255, 255, 255, 0.4);
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  animation: fadeIn 1s ease forwards;
-  animation-delay: 1s;
+  box-shadow: 0 5rpx 15rpx rgba(255, 82, 82, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.share-btn::after {
-  border: none;
+.share-btn::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  transform: rotate(30deg);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) rotate(30deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(30deg);
+  }
+}
+
+.share-btn:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+  background: linear-gradient(135deg, #FF7B00 0%, #FF3333 100%);
 }
 
 .share-text {
